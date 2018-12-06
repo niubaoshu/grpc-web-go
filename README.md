@@ -10,3 +10,4 @@ $ npx webpack client.js
 $ python -m SimpleHTTPServer 8081
 ```
 然后在浏览器打开 http://localhost:8081
+在console 可以看到交互信息
