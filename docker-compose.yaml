@@ -7,23 +7,23 @@ services:
       dockerfile: envoy.Dockerfile
     ports:
     - '8080:8080'
-    - '9901:9901'
+#    - '9901:9901'
     networks:
     - server-net
   goserver:
     build:
       context: .
       dockerfile: go-server.Dockerfile
-    ports:
-    - '9091:9091'
+#    ports:
+#    - '9091:9091'
     networks:
     - server-net
   server:
     build:
       context: .
       dockerfile: node-server.Dockerfile
-    ports:
-    - '9090:9090'
+#    ports:
+#    - '9090:9090'
     networks:
     - server-net
 

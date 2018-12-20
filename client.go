@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	address     = "localhost:9091"
+	address     = "localhost:8080"
 	defaultName = "world"
 )
 
@@ -37,11 +37,12 @@ func main() {
 	}
 	log.Printf("Greeting: %s", r.Message)
 
-	r3, err := c.SayRepeatHello(context.Background(), &pb.RepeatHelloRequest{Name: name, Count: 5})
+	count := int32(5)
+	r3, err := c.SayRepeatHello(context.Background(), &pb.RepeatHelloRequest{Name: name, Count: count})
 	if err != nil {
 		log.Printf("could not greet: %v", err)
 	} else {
-		for {
+		for ; count > 0; count-- {
 			r, err := r3.Recv()
 			if err != nil {
 				log.Printf("could not greet: %v", err)

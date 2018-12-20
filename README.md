@@ -4,9 +4,9 @@
 
 ```bash
 $ ./build.sh
-$ docker-compose up
 $ npm install 
 $ npx webpack client.js
+$ docker-compose up
 $ python -m SimpleHTTPServer 8081
 ```
 然后在浏览器打开 http://localhost:8081
