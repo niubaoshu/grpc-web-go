@@ -38,7 +38,7 @@ var helloworld = protoDescriptor.helloworld;
  * @param {function():?} callback
  */
 function doSayHello(call, callback) {
-  callback(null, {message: 'Hello! '+ call.request.name});
+  callback(null, {message: 'Hello! '+ call.request.name+',from node server'});
 }
 
 /**
@@ -49,7 +49,7 @@ function doSayRepeatHello(call) {
   function sender(name) {
     return (callback) => {
       call.write({
-        message: 'Hey! ' + name
+        message: 'Hello! ' + name +',from node server'
       });
       _.delay(callback, 500); // in ms
     };
@@ -74,7 +74,7 @@ function doSayHelloAfterDelay(call, callback) {
   }
   async.series([dummy()], () => {
     callback(null, {
-      message: 'Hello! '+call.request.name
+      message: 'Hello! '+call.request.name+',from node server'
     });
   });
 }

@@ -20,12 +20,12 @@ type server struct{}
 
 // SayHello implements helloworld.GreeterServer
 func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
-	return &pb.HelloReply{Message: "Hello " + in.Name}, nil
+	return &pb.HelloReply{Message: "Hello " + in.Name + ",from go server"}, nil
 }
 
 func (s *server) SayRepeatHello(in *pb.RepeatHelloRequest, sender pb.Greeter_SayRepeatHelloServer) error {
 	for i := int32(0); i < in.Count; i++ {
-		err := sender.Send(&pb.HelloReply{Message: in.Name + strconv.FormatInt(int64(i), 10)})
+		err := sender.Send(&pb.HelloReply{Message: in.Name + strconv.FormatInt(int64(i), 10) + ",from go server"})
 		if err != nil {
 			return err
 		}
@@ -35,7 +35,7 @@ func (s *server) SayRepeatHello(in *pb.RepeatHelloRequest, sender pb.Greeter_Say
 
 func (s *server) SayHelloAfterDelay(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
 	time.Sleep(time.Second * 5)
-	return &pb.HelloReply{Message: "Hello " + in.Name}, nil
+	return &pb.HelloReply{Message: "Hello " + in.Name + ",from go server"}, nil
 }
 
 func main() {
